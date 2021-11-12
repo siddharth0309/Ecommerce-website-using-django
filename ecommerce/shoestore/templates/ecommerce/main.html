@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>Ecom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;1,200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" >
+  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+  
+  
+  
+  <script type="text/javascript">
+    var user = '{{request.user}}'
+
+    function getToken(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  const csrftoken = getToken('csrftoken');
+
+
+  function getCookie(name){
+    var cookieArr = document.cookie.split(";");
+    for (var i = 0; i< cookieArr.length ; i++){
+      var cookiePair = cookieArr[i].split("=");
+      if(name == cookiePair[0].trim()){
+        return decodeURIComponent(cookiePair[1]);
+      }
+    }
+    return null;
+  }
+  var cart = JSON.parse(getCookie('cart'))
+  if(cart == undefined){
+    cart={}
+    console.log('Cart created',cart)
+    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+  }
+
+</script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark nvbar">
+     
+      <div class="topnav-centered">
+        <a href="{% url 'home' %}"> <img src="{% static 'images/logo.png' %}" class="logo"></a>
+      </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse nvcontent" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'products' %}" id="nv"><h5>Products</h5> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'offers' %}" id="nv"><h5>Offers</h5> <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          </div>
+          
+          <form action="{% url 'search' %}" method="get" class="d-flex">
+            <input class="form-control me-2" type="text" name="query" placeholder="Search..." aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        
+        <!-- <div class="form-inline my-2 my-lg-0">
+            <a href="#"class="btn btn-warning">Login</a> -->
+            
+          <!----------------------- cart ------------------------------>
+            <a href="{% url 'cart' %}">
+               <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+           </a>
+           <p id="cart-total">{{cartItems}}</p>
+          <!------------------------------------------------------------>
+          
+        </div>
+      </nav> 
+
+     
+
+
+
+
+
+
+
+
+
+         <div class="container-fluid">
+                <br>
+                {% block content %}
+
+
+                {% endblock content %}
+         </div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'ecommerce/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+     {% for product in products %}
+     <div class="col-lg-4">
+          <a href="/products/{{ product.slug }}">
+               <img class="thumbnail" src="{{product.imageURL}}">
+               <div class="box-element product">
+                    <h6><strong>{{product.name}}</strong></h6>
+                    <hr>
+                    <!-- <button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                    <a class="btn btn-outline-success" href="#">View</a> -->
+                    <div class="rate">
+                    <h5 style="color: #8a8a8a;"><strong><del>₹{{product.price}}<h4 style="float: right;">
+                         <strong>{{product.get_sale}}</strong></h4></del></strong></h5>
+                    <h5 style="color: red;">20% off</h5>
+                    </div>
+                    
+               </div>
+          </a>
+     </div>
+     {% endfor %}
+</div> 
+
+{% endblock content %}

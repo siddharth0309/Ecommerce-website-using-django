@@ -1,0 +1,52 @@
+{% extends 'ecommerce/main.html' %}
+{% load static %}
+{% block content %}
+
+    <h2 class="text center" style="margin-left: 20px;"> Search Results:  </h5>
+
+        <hr>
+
+        <div class="container">
+
+            <div class="row justify-content-center m-4">
+
+                {% if products %}
+    
+                    {% for product in products %}
+        
+                        <div class="col-lg-4">
+                            <a href="/products/{{ product.slug }}">
+                                <img class="thumbnail" src="{{product.imageURL}}">
+                                <div class="box-element product">
+                                    <h6><strong>{{product.name}}</strong></h6>
+                                    <!-- <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div> -->
+                                    <hr>
+                                    <!-- <button class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                                    <a class="btn btn-outline-success" href="#">View</a>  -->
+                                    <div class="rate">
+                                    <h5 style="color: #8a8a8a;"><strong>₹{{product.price}}</strong></h5>
+                                    
+                                    </div>
+                                    
+                                </div>
+                            </a>
+                    </div>
+        
+                    {% endfor %}
+        
+                {% else %}
+                     <p>No Products available </p>
+                {% endif %}
+    
+            </div>
+
+        </div>
+
+
+{% endblock %}

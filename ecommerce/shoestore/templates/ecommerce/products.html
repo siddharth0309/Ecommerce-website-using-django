@@ -1,0 +1,38 @@
+{% extends 'ecommerce/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid mt-3">
+	<div class="row">
+
+
+		<!-- filter -->
+		<!-- <div class="col-lg-3 mx-auto">
+			<div class="list-group">
+				<a href="/products/{{ product.slug }}" class="list-group-item list-group-item-action">All Products</a> 
+               </div>
+          </div> -->
+				
+
+          <!-- all products -->
+		<div id='products' class="col-lg-12 mx-auto">
+			<div class="row mx-auto">
+				{% for product in products %}
+          <div class="col-lg-4">
+               <a href="/products/{{ product.slug }}">
+                    <img class="thumbnail" src="{{product.imageURL}}">
+                    <div class="box-element product">
+                         <h6 style="text-decoration: none;"><strong>{{product.name}}</strong></h6>
+                         <hr>  
+                         <!-- <button class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                         <a class="btn btn-outline-success" href="#">View</a>  -->
+                         <div class="rate">
+                         <h5 style="color: #8a8a8a;"><strong>₹{{product.price}}</strong></h5>
+                         
+                         </div>
+                         
+                    </div>
+               </a>
+          </div>
+          {% endfor %} 
+     
+{% endblock content %}

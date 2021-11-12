@@ -1,0 +1,169 @@
+{% extends 'ecommerce/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<!------------------------------carousel--------------------------------->
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <br />
+
+      <!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        
+       {% for c in carousel %}
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}" >
+            <img src="{{c.imageURL}}" alt="First Slide" class="img-fluid d-block w-200" style="height: 800px;"/>
+            <div class="carousel-caption d-none d-md-block" id="caption">
+              <h2>Latest Shoe in our shop</h2>
+              <p>Hurry up!!!!!! :D</p>
+            </div>
+          </div>
+          {% endfor %} -->
+          
+           
+
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="icon-prev" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="icon-next" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+  </div>
+</div> 
+
+
+
+<!----------------------------------------------------------------------------------->
+
+
+<div class="header">
+     <div class="roww">
+      <div class="column-2">
+        <h1>Best Online Sneaker Store</h1>
+        <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+      </div>
+      <div class="column-2">
+        <img src="{% static 'images/nike1.jpg' %}" width="100%">
+      </div>
+    </div> 
+    </div>
+    <!-- <div id="section1" class="container-fluid">
+      <img src="{% static 'css/images/logo2.png' %}" width="100%">
+    </div>
+    <div id="section2" class="container-fluid">
+      <div class="row">
+        <div class="column-2">
+        <h1>New Exclusive Sneaker</h1>
+        </div>
+      <div class="column-2">
+        <img src="{% static 'css/images/nike-dior.jpg' %}" width="100%">
+      </div>
+    </div>  
+    </div>
+    <div id="section3" class="container-fluid">
+      
+    </div>
+    <div id="section41" class="container-fluid">
+      
+    </div>
+    <div id="section42" class="container-fluid">
+     
+    </div> -->
+
+<!----------featured catogries-------------->
+  <div class="catogries">
+    <u  class="our_products">
+      <p>Our Products</p>
+    </u>
+    <div class="small-container">
+    <div class="roww">
+      <div class="column-3">
+        <img src="{% static 'images/sb-force-58.jpg' %}" width="100%">
+      </div>
+    <div class="column-3">
+      <img src="{% static 'images/sb-force-58.jpg' %}" width="100%">
+    </div>
+    <div class="column-3">
+      <img src="{% static 'images/sb-force-58.jpg' %}" width="100%">
+    </div>
+    </div>
+  </div> 
+
+<!----------------offer-------------->
+
+<div class="header">
+    <div class="offer">
+      <div class="small-container">
+        <div class="row">
+          <div class="column-2">
+            <img src="{% static 'images/nike-dior.jpg' %}" width="100%" class="offer-img">
+                </div>
+                    <div class="column-2">
+                        <p>Exclusively available on ....</p>
+                        <h1>Nike Dior</h1>
+                        <small>special AJ1 is made entirely in Italy featuring a mixture of white and Dior Gray leather, 
+                        with an Oblique monogrammed Swoosh (similar in style to the graphic featured on the fashion house's popular 
+                        B23 high-top sneaker) and hand-painted edges.
+                        "Air Dior" has also been applied to Jordan's familiar Wings logo.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------footer-------->
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col-1">
+        <h3>Download Our App</h3>
+        <p>.................</p>
+        <div class="app-logo">
+          {% for f in footer %}
+          <img src="{{f.imageURL}}">
+          {% endfor %}
+        </div>
+      </div>
+      <div class="footer-col-2">
+        <h3>Enjoy Our App</h3>
+        <p>Our is one of the finest all over the world</p>
+      </div>
+      <div class="footer-col-3">
+        <h3>Useful Links</h3>
+        <p>Coupons<br>Blog post<br>return policy<br>Join Affiliate</p>
+      </div>
+      <div class="footer-col-4">
+        <h3>Follow us</h3>
+        <p>Instagram<br>Facebook<br>Twitter<br>Youtube</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- jQuery first, then Bootstrap JS. -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+{% endblock content %}
